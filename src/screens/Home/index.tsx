@@ -5,6 +5,8 @@ import { styles } from "./styles";
 export const Home: React.FC = () => {
   function handleAddParticipant() {}
 
+  function handleRemoveParticipant() {}
+
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>Nome do Evento</Text>
@@ -17,6 +19,7 @@ export const Home: React.FC = () => {
           placeholderTextColor="#6b6b6b"
           autoComplete="off"
           autoCapitalize="words"
+          onSubmitEditing={handleAddParticipant}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleAddParticipant}>
@@ -24,10 +27,7 @@ export const Home: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      <Participant name="Wallace Júnior" />
-      <Participant name="Rodrigo Gonçalves" />
-      <Participant name="Diego Fernandes" />
-      <Participant name="Biro Biro" />
+      <Participant name="Wallace Júnior" onRemove={handleRemoveParticipant} />
     </View>
   );
 };
