@@ -24,8 +24,10 @@ export const Home: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      <Participant />
-      <Participant />
+      <Participant name="Wallace Júnior" />
+      <Participant name="Rodrigo Gonçalves" />
+      <Participant name="Diego Fernandes" />
+      <Participant name="Biro Biro" />
     </View>
   );
 };
