@@ -1,4 +1,5 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export const Home: React.FC = () => {
@@ -22,6 +23,9 @@ export const Home: React.FC = () => {
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
+
+      <Participant />
+      <Participant />
     </View>
   );
 };
