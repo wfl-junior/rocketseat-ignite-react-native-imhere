@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Alert,
   FlatList,
@@ -9,26 +10,18 @@ import {
 import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
-const participants = [
-  "Wallace",
-  "Rodrigo",
-  "Vini",
-  "Diego",
-  "Biro",
-  "Ana",
-  "Isa",
-  "Jack",
-  "Mayk",
-];
-
 export const Home: React.FC = () => {
+  const [participants, setParticipants] = useState<string[]>([]);
+
   function handleAddParticipant() {
-    if (participants.includes("Rodrigo")) {
+    if (participants.includes("Maria")) {
       return Alert.alert(
         "Participante",
         "Já existe um participante na lista com esse nome.",
       );
     }
+
+    setParticipants(previousParticipants => [...previousParticipants, "Maria"]);
   }
 
   function handleRemoveParticipant(name: string) {
