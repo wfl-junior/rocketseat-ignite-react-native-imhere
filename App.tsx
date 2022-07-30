@@ -1,19 +1,5 @@
 import { Fragment } from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#121015",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    color: "white",
-    fontSize: 36,
-    fontWeight: "700",
-  },
-});
+import { StatusBar, Text, View } from "react-native";
 
 const App = () => (
   <Fragment>
@@ -23,8 +9,32 @@ const App = () => (
       translucent
     />
 
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello World</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#131016",
+        padding: 24,
+      }}
+    >
+      <Text
+        style={{
+          color: "#fdfcfe",
+          fontSize: 24,
+          fontWeight: "700",
+          marginTop: 48,
+        }}
+      >
+        Nome do Evento
+      </Text>
+
+      <Text
+        style={{
+          color: "#6b6b6b",
+          fontSize: 16,
+        }}
+      >
+        Sexta, 4 de novembro de 2022
+      </Text>
     </View>
   </Fragment>
 );
