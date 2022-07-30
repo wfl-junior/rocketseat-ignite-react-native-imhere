@@ -1,5 +1,5 @@
 import {
-  ScrollView,
+  FlatList,
   Text,
   TextInput,
   TouchableOpacity,
@@ -45,15 +45,20 @@ export const Home: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {participants.map(participant => (
-          <Participant
-            name={participant}
-            key={participant}
-            onRemove={handleRemoveParticipant}
-          />
-        ))}
-      </ScrollView>
+      <FlatList
+        data={participants}
+        keyExtractor={participant => participant}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item: participant }) => (
+          <Participant name={participant} onRemove={handleRemoveParticipant} />
+        )}
+        ListEmptyComponent={() => (
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione participantes à sua lista
+            de presença.
+          </Text>
+        )}
+      />
     </View>
   );
 };
