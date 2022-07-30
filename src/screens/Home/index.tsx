@@ -47,7 +47,9 @@ export const Home: React.FC = () => {
           text: "Sim",
           style: "destructive",
           onPress: () => {
-            Alert.alert("Participante", `Participante ${name} removido.`);
+            setParticipants(participants => {
+              return participants.filter(participant => participant !== name);
+            });
           },
         },
       ],
