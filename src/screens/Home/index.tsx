@@ -11,17 +11,27 @@ import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export const Home: React.FC = () => {
+  const [newParticipant, setNewParticipant] = useState("");
   const [participants, setParticipants] = useState<string[]>([]);
 
   function handleAddParticipant() {
-    if (participants.includes("Maria")) {
+    if (!newParticipant) {
+      return Alert.alert("Participante", "Informe o participante.");
+    }
+
+    if (participants.includes(newParticipant)) {
       return Alert.alert(
         "Participante",
         "Já existe um participante na lista com esse nome.",
       );
     }
 
-    setParticipants(previousParticipants => [...previousParticipants, "Maria"]);
+    setParticipants(previousParticipants => [
+      ...previousParticipants,
+      newParticipant,
+    ]);
+
+    setNewParticipant("");
   }
 
   function handleRemoveParticipant(name: string) {
@@ -57,6 +67,8 @@ export const Home: React.FC = () => {
           autoComplete="off"
           autoCapitalize="words"
           onSubmitEditing={handleAddParticipant}
+          value={newParticipant}
+          onChangeText={setNewParticipant}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleAddParticipant}>
