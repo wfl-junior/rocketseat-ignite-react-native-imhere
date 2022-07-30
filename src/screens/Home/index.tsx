@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   Text,
   TextInput,
@@ -21,9 +22,34 @@ const participants = [
 ];
 
 export const Home: React.FC = () => {
-  function handleAddParticipant() {}
+  function handleAddParticipant() {
+    if (participants.includes("Rodrigo")) {
+      return Alert.alert(
+        "Participante",
+        "Já existe um participante na lista com esse nome.",
+      );
+    }
+  }
 
-  function handleRemoveParticipant() {}
+  function handleRemoveParticipant(name: string) {
+    Alert.alert(
+      "Participante",
+      `Deseja mesmo remover o participante ${name}?`,
+      [
+        {
+          text: "Não",
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          style: "destructive",
+          onPress: () => {
+            Alert.alert("Participante", `Participante ${name} removido.`);
+          },
+        },
+      ],
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -50,7 +76,10 @@ export const Home: React.FC = () => {
         keyExtractor={participant => participant}
         showsVerticalScrollIndicator={false}
         renderItem={({ item: participant }) => (
-          <Participant name={participant} onRemove={handleRemoveParticipant} />
+          <Participant
+            name={participant}
+            onRemove={() => handleRemoveParticipant(participant)}
+          />
         )}
         ListEmptyComponent={() => (
           <Text style={styles.listEmptyText}>
