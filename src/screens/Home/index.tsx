@@ -15,7 +15,9 @@ export const Home: React.FC = () => {
   const [participants, setParticipants] = useState<string[]>([]);
 
   function handleAddParticipant() {
-    if (!newParticipant) {
+    const newParticipantTrimmed = newParticipant.trim();
+
+    if (!newParticipantTrimmed) {
       return Alert.alert("Participante", "Informe o participante.");
     }
 
@@ -28,7 +30,7 @@ export const Home: React.FC = () => {
 
     setParticipants(previousParticipants => [
       ...previousParticipants,
-      newParticipant,
+      newParticipantTrimmed,
     ]);
 
     setNewParticipant("");
@@ -58,8 +60,8 @@ export const Home: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.eventName}>Nome do Evento</Text>
-      <Text style={styles.eventDate}>Sexta, 4 de novembro de 2022</Text>
+      <Text style={styles.eventName}>Ignite React Native</Text>
+      <Text style={styles.eventDate}>Sábado, 30 de julho de 2022</Text>
 
       <View style={styles.form}>
         <TextInput
